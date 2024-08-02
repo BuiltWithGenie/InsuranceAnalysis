@@ -1,0 +1,35 @@
+   <header style="display: flex; justify-content: space-between; align-items: center; background-color: #2c3e50; padding: 15px 20px; color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <div style="font-size: 24px; font-weight: bold;">Year-event loss table analysis</div>
+        <nav>
+            <a href="/" style="color: white; text-decoration: none; margin: 0 15px; padding: 5px 10px; border-radius: 5px; transition: background-color 0.3s;">Contracts</a>
+            <a href="/yelt" style="color: white; text-decoration: none; margin: 0 15px; padding: 5px 10px; border-radius: 5px; transition: background-color 0.3s; background-color: #34495e;">Yelt</a>
+        </nav>
+    </header>
+<div class="container">
+    <div class="row">
+        <div class="st-col col-8 col-sm st-module">
+            <h6>YELT</h6>
+            <q-table v-model="yelt_data" v-on:request=" function (event) { handle_event(event, 'request'); } " :pagination.sync="pagination" id="it9y" row-key="__id" :columns="yelt_data_table.columns" :data="yelt_data_table.data" :pagination="pagination"></q-table>
+        </div>
+        <div id="ivwy1" class="st-col col-4 st-module">
+            <h6>Yearly losses</h6>
+            <q-table id="idphq" :columns="yearly_losses_table.columns" :data="yearly_losses_table.data" row-key="id" :flat="true" :bordered="true" :pagination="yearly_losses_pagination" :virtual-scroll="true"></q-table>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="st-col col-12 col-sm st-module">
+            <h6>Return periods</h6>
+            <q-table id="iht3t" v-on:row-click="function(event,row){selected_return_period=row.ReturnPeriod}" :columns="return_periods_table.columns" :data="return_periods_table.data" row-key="id" :flat="true" :bordered="true"></q-table>
+            <p style="color:darkred"> Click an entry in the ReturnPeriod column to view its perils on the right table.</p>
+        </div>
+        <div class="st-col col-12 col-sm st-module">
+            <h6>Top perils for RP {{selected_return_period}}</h6>
+            <q-table id="ig9eh" :columns="specific_rp_analysis_table.columns" :data="specific_rp_analysis_table.data" row-key="id" :flat="true" :bordered="true"></q-table>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="st-col col-12 col-sm st-module">
+            <!--</div>-->
+        </div>
+    </div>
+</div>

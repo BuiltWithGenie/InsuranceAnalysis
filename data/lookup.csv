@@ -1,0 +1,135 @@
+AccumulationPerilId,AccumulationPerilName,PerilName,PerilTypeName
+2,US Alaska - EQ,Earthquake,Natural
+3,Central America - HU,Hurricane,Natural
+5,Asia Pacific - EQ,Earthquake,Natural
+6,Attritional,Attritional,Other
+7,Australia - WF,Wildfire,Natural
+8,Australia - TO,SCS,Natural
+9,Australia - EQ,Earthquake,Natural
+10,Australia - HU,Hurricane,Natural
+11,US California - EQ,Earthquake,Natural
+12,US California - WF,Wildfire,Natural
+13,Canada - EQ,Earthquake,Natural
+15,Canada - TO,SCS,Natural
+16,Canada - HU,Hurricane,Natural
+17,Canada - WT,Winterstorm,Natural
+18,Caribbean - EQ,Earthquake,Natural
+19,Caribbean - HU,Hurricane,Natural
+20,Central America - EQ,Earthquake,Natural
+21,Chile - EQ,Earthquake,Natural
+22,China - EQ,Earthquake,Natural
+23,China - FL,Flood,Natural
+24,China - HU,Hurricane,Natural
+25,Columbia - EQ,Earthquake,Natural
+26,Europe - EQ,Earthquake,Natural
+27,Europe - FL,Flood,Natural
+29,Europe - TO,SCS,Natural
+30,Europe - WS,Winterstorm,Natural
+31,US Florida - HU,Hurricane,Natural
+32,Guam - EQ,Earthquake,Natural
+33,Guam - HU,Hurricane,Natural
+34,US Gulf - HU,Hurricane,Natural
+35,US Hawaii - EQ,Earthquake,Natural
+36,US Hawaii - HU,Hurricane,Natural
+37,Hong Kong - HU,Hurricane,Natural
+38,India - EQ,Earthquake,Natural
+39,India - FL,Flood,Natural
+40,India - HU,Hurricane,Natural
+41,Indonesia - EQ,Earthquake,Natural
+42,Israel - EQ,Earthquake,Natural
+43,Japan - EQ,Earthquake,Natural
+44,Japan - FL,Flood,Natural
+45,Japan - HU,Hurricane,Natural
+46,Korea - EQ,Earthquake,Natural
+47,Korea - HU,Hurricane,Natural
+48,Latin America - HU,Hurricane,Natural
+49,Mexico - EQ,Earthquake,Natural
+50,Mexico - HU,Hurricane,Natural
+51,US - TO,SCS,Natural
+52,US - WT,Winterstorm,Natural
+53,US New Madrid - EQ,Earthquake,Natural
+54,New Zealand - EQ,Earthquake,Natural
+55,US North East - HU,Hurricane,Natural
+56,Asia Pacific - HU,Hurricane,Natural
+57,US Pacific NW - EQ,Earthquake,Natural
+58,Philippines - EQ,Earthquake,Natural
+59,Philippines - HU,Hurricane,Natural
+69,US South East - HU,Hurricane,Natural
+70,Taiwan - EQ,Earthquake,Natural
+71,Taiwan - HU,Hurricane,Natural
+72,US Texas - HU,Hurricane,Natural
+73,Turkey - EQ,Earthquake,Natural
+76,US - FL,Flood,Natural
+79,Latin America - EQ,Earthquake,Natural
+80,US Northern Rockies - EQ,Earthquake,Natural
+81,US Midwest Dakotas - EQ,Earthquake,Natural
+82,US Great Lakes - EQ,Earthquake,Natural
+83,US North East - EQ,Earthquake,Natural
+84,US Great Basin - EQ,Earthquake,Natural
+85,US Southern Rockies - EQ,Earthquake,Natural
+86,US Midwest Southern - EQ,Earthquake,Natural
+87,US South East - EQ,Earthquake,Natural
+88,Fire,Fire,Other
+89,US - Terror Conv,S&T,Other
+90,Mn War,Marine War,Other
+91,Cyber,Cyber,Other
+92,General Aviation,General Aviation,Other
+93,Nuclear Energy,Nuclear Energy,Other
+94,Pandemic,Pandemic,Other
+95,Riot/Civil Commotion,Riot/Civil Commotion,Other
+96,Industrial Accident,Industrial Accident,Other
+97,Other,Other,Other
+98,Ag Crop Hail,Crop Hail,Other
+99,Ag MPCI,MPCI,Other
+100,Ag Livestock,Livestock,Other
+101,TechProperty,TechProperty,Other
+102,Surety,Surety,Other
+103,Mortgage,Mortgage,Other
+104,Political / Credit Risk,Political / Credit Risk,Other
+105,Mn Hull,Hull,Other
+106,Mn Cargo,Cargo,Other
+107,Mn Liability,Liability Marine,Other
+108,Mn IGPIA,IGPIA,Other
+109,Mn Specie / FA,Specie / FA,Other
+110,Product Recall,Product Recall,Other
+111,Contingency,Contingency,Other
+112,Space,Space,Other
+113,Offshore Property Damage,Property Damage Off,Other
+114,Offshore Liability,Liability Offshore,Other
+115,Onshore Property Damage,Property Damage On,Other
+116,Onshore Liability,Liability Onshore,Other
+117,ROW - Cat Other,Other Cat,Natural
+118,Europe - Cat Other,Other Cat,Natural
+119,US - Cat Other,Other Cat,Natural
+120,US - Terror NCBR,NCBR,Other
+121,Belgium - Terror Conv,S&T,Other
+122,Belgium - Terror NCBR,NCBR,Other
+123,Canada - Terror Conv,S&T,Other
+124,Canada - Terror NCBR,NCBR,Other
+125,Denmark - Terror Conv,S&T,Other
+126,Denmark - Terror NCBR,NCBR,Other
+127,France - Terror Conv,S&T,Other
+128,France - Terror NCBR,NCBR,Other
+129,UK - Terror Conv,S&T,Other
+130,UK - Terror NCBR,NCBR,Other
+131,Ireland - Terror Conv,S&T,Other
+132,Ireland - Terror NCBR,NCBR,Other
+133,Italy - Terror Conv,S&T,Other
+134,Italy - Terror NCBR,NCBR,Other
+135,Turkey - Terror Conv,S&T,Other
+136,Turkey - Terror NCBR,NCBR,Other
+137,Vatican - Terror Conv,S&T,Other
+138,Vatican - Terror NCBR,NCBR,Other
+139,Vietnam - EQ,Earthquake,Natural
+140,Other - Terror Conv,S&T,Other
+141,War On Land,WOL,Other
+142,SRCC,SRCC,Other
+143,Avn52,Avn52,Other
+144,Avn Hull War,Avn Hull War,Other
+145,US Pacific Northwest - WF,Wildfire,Natural
+146,Canada - WF,Wildfire,Natural
+147,US Midwestern - WF,Wildfire,Natural
+148,US Northeast - WF,Wildfire,Natural
+149,US Southeast - WF,Wildfire,Natural
+150,Offshore Renewable,Offshore Renewable,Other
+151,Onshore Renewable,Onshore Renewable,Other
