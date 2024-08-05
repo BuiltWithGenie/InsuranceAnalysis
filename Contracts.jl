@@ -6,23 +6,31 @@ using Main.ContractAnalysis
 const results = analyze_contracts("data/contracts-data.csv")
 const _columns = names(results.data)
 const _treemap_data = prepare_treemap_data(results.hierarchical_premium)
+const N = size(results.data)[1]
 
 @app begin
     # Main table
-    @out data_table_page = DataTable(results.data[1:10, :])
-    @out pagination = DataTablePagination(rows_per_page=10, rows_number=size(results.data)[1])
-
-    @event request begin
-        # the process_request function will select the portion of df to be displayed as table_page
-        state = StippleUI.Tables.process_request(results.data, data_table_page, pagination, "")
-        data_table_page = state.datatable  # the selected portion of df
-        pagination = state.pagination # update the pagination state in the backend and the browser
+    @out data_table_page = DataTable(results.data)
+    #=@out pagination = DataTablePagination(rows_per_page=10, rows_number=size(results.data)[1])=#
+    @out pagination = DataTablePagination(rows_per_page=10, rows_number=N)
+    @in filter = ""
+    @onchange filter begin
+        @show filter
     end
+    #==#
+    #=@event request begin=#
+    #=    # the process_request function will select the portion of df to be displayed as table_page=#
+    #=    state = StippleUI.Tables.process_request(results.data, data_table_page, pagination, "")=#
+    #=    data_table_page = state.datatable  # the selected portion of df=#
+    #=    pagination = state.pagination # update the pagination state in the backend and the browser=#
+    #=end=#
 
+    # Data aggregation
     @in metrics_options = _columns
     @in target = :AdjustedPremium
     @in selected_metrics = [:ClientName, :Year]
     @out aggregated_data = DataTable(aggregate_data(results.premium_by_client_year, [:ClientName, :Year], :AdjustedPremium))
+    @in filter_agg = ""
 
     @onchange selected_metrics, target begin
         aggregated_data = DataTable(aggregate_data(results.data, selected_metrics, target))

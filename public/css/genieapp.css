@@ -1,3 +1,36 @@
 #idphq{
     height:600px;
 } 
+
+.sticky-header {
+  /* height or max-height is important */
+  height: 310px;
+}
+
+.sticky-header .q-table__top,
+.sticky-header .q-table__bottom,
+.sticky-header thead tr:first-child th {
+  /* bg color is important for th; just specify one */
+  background-color: #FFFFFF;
+}
+
+.sticky-header thead tr th {
+  position: sticky;
+  z-index: 1;
+}
+
+.sticky-header thead tr:first-child th {
+  top: 0;
+}
+
+/* this is when the loading indicator appears */
+.sticky-header.q-table--loading thead tr:last-child th {
+  /* height of all previous header rows */
+  top: 48px;
+}
+
+/* prevent scrolling behind sticky top row on focus */
+.sticky-header tbody {
+  /* height of all previous header rows */
+  scroll-margin-top: 48px;
+}

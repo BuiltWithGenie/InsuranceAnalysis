@@ -14,18 +14,18 @@ const _return_periods = [5, 10, 20, 50, 100]
 const rp_analysis = calculate_return_periods(yearly_losses, _return_periods)
 
 @app begin
-    @out yelt_data_table = DataTable(first(yelt_data, 10))
+    @out yelt_data_table = DataTable(first(yelt_data, 20))
     @out yearly_losses_table = DataTable(yearly_losses)
     @out yearly_losses_pagination = DataTablePagination(rows_per_page=_data_years, rows_number=_data_years)
     @out return_periods_table = DataTable(rp_analysis)
     @out specific_rp_analysis_table = DataTable()
     @out data_years = _data_years
     @out return_periods = _return_periods
-    @out pagination = DataTablePagination(rows_per_page=10, rows_number=size(yelt_data)[1])
+    @out pagination = DataTablePagination(rows_per_page=20, rows_number=size(yelt_data)[1])
 
     @event request begin
         # the process_request function will select the portion of df to be displayed as table_page
-        state = StippleUI.Tables.process_request(yelt_data, data_table_page, pagination, "")
+        state = StippleUI.Tables.process_request(yelt_data, yelt_data_table, pagination, "")
         data_table_page = state.datatable  # the selected portion of df
         pagination = state.pagination # update the pagination state in the backend and the browser
     end
