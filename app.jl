@@ -1,5 +1,5 @@
 module App
 using Revise
-includet("Contracts.jl")
-includet("Yelt.jl")
+include("Contracts.jl")
+include("Yelt.jl")
 end

@@ -46,7 +46,7 @@ function analyze_specific_return_period(df::DataFrame, yearly_losses::DataFrame,
     relevant_events = filter(row -> row.Year == rp_year, df)
 
     # Join with lookup table to get peril names
-    relevant_events = leftjoin(relevant_events, lookup_table, on=:AccumulationPerilId)
+    #=relevant_events = leftjoin(relevant_events, lookup_table, on=:AccumulationPerilId)=#
 
     # Group by LayerId and AccumulationPerilName
     summary = combine(groupby(relevant_events, [:LayerId, :AccumulationPerilName]),

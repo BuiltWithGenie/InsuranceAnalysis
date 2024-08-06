@@ -1,49 +1,62 @@
-   <header style="display: flex; justify-content: space-between; align-items: center; background-color: #2c3e50; padding: 15px 20px; color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-        <div style="font-size: 24px; font-weight: bold;">Contracts data analysis</div>
-        <nav>
-            <a href="/" style="color: white; text-decoration: none; margin: 0 15px; padding: 5px 10px; border-radius: 5px; transition: background-color 0.3s; background-color: #34495e;">Contracts</a>
-            <a href="/yelt" style="color: white; text-decoration: none; margin: 0 15px; padding: 5px 10px; border-radius: 5px; transition: background-color 0.3s;">Yelt</a>
-        </nav>
-    </header>
-<div class="row">
-    <div class="st-col col-12 col-sm st-module">
-        <!--<q-table v-model="data_table_page" v-on:request=" function (event) { handle_event(event, 'request'); } " :pagination.sync="pagination" id="it9y" row-key="__id" :columns="data_table_page.columns" title="Contract data table" :data="data_table_page.data" :pagination="pagination" :filter="filter">-->
-        <q-table class="sticky-header" id="isb4" row-key="__id" :dense="true" :data="data_table_page.data" :columns="data_table_page.columns" title="Contract data" :filter="filter" :virtual-scroll="true"  :rows-per-page-options="[0]" style="height:600px">
-    <template v-slot:top-right="">
-        <q-input debounce="300" label="" v-model="filter" placeholder="Search" dense="">
-            <template v-slot:append="">
-                <q-icon name="search"></q-icon>
-            </template>
-        </q-input>
-    </template>
-        </q-table>
-    </div>
-</div>
-<div class="row">
-    <div class="st-col col-12 col-sm st-module">
-        <q-table class="sticky-header" id="it9n-2-2" :dense="true" :data="selected_group_table.data" :columns="selected_group_table.columns" :bordered="true" title="Grouped data by column">
-            <template v-slot:top-right>
-                <q-select id="ig55-2-2" label="Group by" v-model="group_by" :options="columns" style="margin-right:60px"></q-select>
-                <q-select id="ig55-3" label="Group select" v-model="group_select" :options="group_keys"></q-select>
-            </template>
-        </q-table>
-    </div>
-</div>
-<div class="row">
-    <div class="st-col col-12 col-sm st-module">
-        <q-table class="sticky-header" id="isb4" row-key="__id" :dense="true" :data="aggregated_data.data" :columns="aggregated_data.columns" title="Aggregated data by column" :filter="filter_agg" :virtual-scroll="true" :rows-per-page-options="[0]" style="height:400px">
-    <template v-slot:top-right="">
-        <q-select id="ig55" label="Aggregate by" v-model="selected_metrics" :multiple="true" :options="metrics_options" :use-chips="true" dense style="margin-right:60px"></q-select>
-        <q-select id="ig55-2" label="Target" v-model="target" :options="metrics_options" dense ></q-select>
-        <q-input debounce="300" label="" v-model="filter_agg" placeholder="Search" dense style="margin-left:60px;width=50px">
-            <template v-slot:append="">
-                <q-icon name="search"></q-icon>
-            </template>
-        </q-input>
-    </template>
-        </q-table>
-    </div>
-</div>
+<header
+  style="
+    background-color: #4a5568;
+    color: white;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  "
+>
+    <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-size: 1.5rem; font-weight: bold;">Contract data analysis</div>
+                    <nav>
+                                <a href="/" style="color: white; text-decoration: none; padding: 0.5rem 1rem; margin-left: 1rem; border-radius: 4px; transition: background-color 0.3s; background-color: #5a6978;">Contracts</a>
+                                            <a href="/yelt" style="color: white; text-decoration: none; padding: 0.5rem 1rem; margin-left: 1rem; border-radius: 4px; transition: background-color 0.3s;">Yelt</a>
+                                                    </nav>
+                                                        </div>
+                                                        </header>
 
-<h4>Premium per business entity - unit - segment</h4>
-<plotly id="ia8fr" data="W3siZ2J0eXBlIjoiVHJlZW1hcCIsInR5cGUiOiJ0cmVlbWFwIiwibGFiZWxzIjoiJF97dG1hcF9sYWJlbHN9IiwicGFyZW50cyI6IiRfe3RtYXBfcGFyZW50c30iLCJ2YWx1ZXMiOiIkX3t0bWFwX3ZhbHVlc30iLCJuYW1lIjoiVHJhY2UifV0=" config="e30=" layout="eyJoZWlnaHQiOiI3MDAifQ=="></plotly>
+<main style="max-width: 95%; margin: 2rem auto; padding: 0 1rem">
+                                                            <div style="background-color: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 2rem; overflow: hidden;">
+                                                                    <q-table class="sticky-header" id="isb4" row-key="__id" :dense="true" :data="data_table_page.data" :columns="data_table_page.columns" title="Contract Data" :filter="filter" :virtual-scroll="true" :rows-per-page-options="[0]" style="height: 600px;">
+                                                                                <template v-slot:top-right>
+                                                                                                <q-input debounce="300" v-model="filter" placeholder="Search" dense style="width: 200px;">
+                                                                                                                    <template v-slot:append>
+                                                                                                                                            <q-icon name="search"></q-icon>
+                                                                                                                                                                </template>
+                                                                                                                                                                                </q-input>
+                                                                                                                                                                                            </template>
+                                                                                                                                                                                                    </q-table>
+                                                                                                                                                                                                        </div>
+
+                                                                                                                                                                                                            <div style="background-color: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 2rem; overflow: hidden;">
+                                                                                                                                                                                                                    <q-table class="sticky-header" id="it9n-2-2" :dense="true" :data="selected_group_table.data" :columns="selected_group_table.columns" :bordered="true" title="Grouped Data by Column">
+                                                                                                                                                                                                                                <template v-slot:top-right>
+                                                                                                                                                                                                                                                <div style="display: flex; gap: 1rem;">
+                                                                                                                                                                                                                                                                    <q-select id="ig55-2-2" label="Group by" v-model="group_by" :options="columns" style="width: 200px;"></q-select>
+                                                                                                                                                                                                                                                                                        <q-select id="ig55-3" label="Group select" v-model="group_select" :options="group_keys" style="width: 200px;"></q-select>
+                                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                                                    </template>
+                                                                                                                                                                                                                                                                                                                            </q-table>
+                                                                                                                                                                                                                                                                                                                                </div>
+
+                                                                                                                                                                                                                                                                                                                                    <div style="background-color: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 2rem; overflow: hidden;">
+                                                                                                                                                                                                                                                                                                                                            <q-table class="sticky-header" id="isb4" row-key="__id" :dense="true" :data="aggregated_data.data" :columns="aggregated_data.columns" title="Aggregated Data by Column" :filter="filter_agg" :virtual-scroll="true" :rows-per-page-options="[0]" style="height: 400px;">
+                                                                                                                                                                                                                                                                                                                                                        <template v-slot:top-right>
+                                                                                                                                                                                                                                                                                                                                                                        <div style="display: flex; gap: 1rem; align-items: center;">
+                                                                                                                                                                                                                                                                                                                                                                                            <q-select id="ig55" label="Aggregate by" v-model="selected_metrics" :multiple="true" :options="metrics_options" :use-chips="true" dense ></q-select>
+                                                                                                                                                                                                                                                                                                                                                                                                                <q-select id="ig55-2" label="Target" v-model="target" :options="metrics_options" dense style="width: 200px;"></q-select>
+                                                                                                                                                                                                                                                                                                                                                                                                                                    <q-input debounce="300" v-model="filter_agg" placeholder="Search" dense style="width: 200px;">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                            <template v-slot:append>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <q-icon name="search"></q-icon>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </template>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </q-input>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </template>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </q-table>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <div style="background-color: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 1.5rem;">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <h4 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem;">Premium per Business Entity - Unit - Segment</h4>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <plotly id="ia8fr" data="W3siZ2J0eXBlIjoiVHJlZW1hcCIsInR5cGUiOiJ0cmVlbWFwIiwibGFiZWxzIjoiJF97dG1hcF9sYWJlbHN9IiwicGFyZW50cyI6IiRfe3RtYXBfcGFyZW50c30iLCJ2YWx1ZXMiOiIkX3t0bWFwX3ZhbHVlc30iLCJuYW1lIjoiVHJhY2UifV0=" config="e30=" layout="eyJoZWlnaHQiOiI3MDAifQ=="></plotly>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </main>

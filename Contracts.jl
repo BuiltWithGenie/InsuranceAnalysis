@@ -10,12 +10,12 @@ const N = size(results.data)[1]
 
 @app begin
     # Main table
-    @out data_table_page = DataTable(results.data)
+    @out data_table_page = DataTable()
     #=@out pagination = DataTablePagination(rows_per_page=10, rows_number=size(results.data)[1])=#
     @out pagination = DataTablePagination(rows_per_page=10, rows_number=N)
     @in filter = ""
-    @onchange filter begin
-        @show filter
+    @onchange isready begin
+        data_table_page = DataTable(results.data)
     end
     #==#
     #=@event request begin=#

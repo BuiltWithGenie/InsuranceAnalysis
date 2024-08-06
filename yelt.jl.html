@@ -1,32 +1,49 @@
-   <header style="display: flex; justify-content: space-between; align-items: center; background-color: #2c3e50; padding: 15px 20px; color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-        <div style="font-size: 24px; font-weight: bold;">Year-event loss table analysis</div>
-        <nav>
-            <a href="/" style="color: white; text-decoration: none; margin: 0 15px; padding: 5px 10px; border-radius: 5px; transition: background-color 0.3s;">Contracts</a>
-            <a href="/yelt" style="color: white; text-decoration: none; margin: 0 15px; padding: 5px 10px; border-radius: 5px; transition: background-color 0.3s; background-color: #34495e;">Yelt</a>
-        </nav>
+<header
+  style="
+    background-color: #4a5568;
+    color: white;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  "
+>
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-size: 1.5rem; font-weight: bold;">Year-Event Loss Table Analysis</div>
+            <nav>
+                <a href="/" style="color: white; text-decoration: none; padding: 0.5rem 1rem; margin-left: 1rem; border-radius: 4px; transition: background-color 0.3s;">Contracts</a>
+                <a href="/yelt" style="color: white; text-decoration: none; padding: 0.5rem 1rem; margin-left: 1rem; border-radius: 4px; transition: background-color 0.3s; background-color: #5a6978;">Yelt</a>
+            </nav>
+        </div>
     </header>
-<div class="container">
-    <div class="row">
-        <div class="st-col col-8 col-sm st-module">
-            <h6>YELT</h6>
-            <q-table v-model="yelt_data_table" v-on:request=" function (event) { handle_event(event, 'request'); } " :pagination.sync="pagination" id="it9y" row-key="__id" :columns="yelt_data_table.columns" :data="yelt_data_table.data" :pagination="pagination" dense></q-table>
 
-            <p>pagination is not working yet</p>
+<main style="max-width: 95%; margin: 2rem auto; padding: 0 1rem">
+        <div style="display: flex; gap: 2rem; margin-bottom: 2rem;">
+            <div style=" background-color: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 1.5rem; width=60%; overflow:hidden">
+                <q-table row-key="__id" :columns="yelt_data_table.columns" v-model="yelt_data_table" title="YELT" :data="yelt_data_table.data" v-on:request="function (event) { handle_event(event, 'request'); }" :pagination="pagination" :pagination.sync="pagination" :filter="filter">
+                    <template v-slot:top-right>
+                        <q-select id="ig55" label="Filter columns" v-model="select_filter_columns" :multiple="true" :options="columns" :use-chips="true" dense style="margin-right:30px;min-width:100px" ></q-select>
+                        <q-input debounce="300" v-model="filter" label="Filter" dense style="width: 200px;">
+                            <template v-slot:append>
+                                <q-icon name="search"></q-icon>
+                            </template>
+                        </q-input>
+                    </template>
+                </q-table>
+            </div>
+            <div style="flex: 1; background-color: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 1.5rem;">
+                <h6 style="font-size: 1.1rem; font-weight: 600; margin-top: 0; margin-bottom: 1rem;">Yearly losses</h6>
+                <q-table id="idphq" :columns="yearly_losses_table.columns" :data="yearly_losses_table.data" row-key="id" :flat="true" :bordered="true" :pagination="yearly_losses_pagination" :virtual-scroll="true" dense></q-table>
+            </div>
         </div>
-        <div id="ivwy1" class="st-col col-4 st-module">
-            <h6>Yearly losses</h6>
-            <q-table id="idphq" :columns="yearly_losses_table.columns" :data="yearly_losses_table.data" row-key="id" :flat="true" :bordered="true" :pagination="yearly_losses_pagination" :virtual-scroll="true" dense></q-table>
+        
+        <div style="display: flex; gap: 2rem;">
+            <div style="flex: 1; background-color: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 1.5rem;">
+                <h6 style="font-size: 1.1rem; font-weight: 600; margin-top: 0; margin-bottom: 1rem;">Return periods</h6>
+                <q-table id="iht3t" v-on:row-click="function(event,row){selected_return_period=row.ReturnPeriod}" :columns="return_periods_table.columns" :data="return_periods_table.data" row-key="id" :flat="true" :bordered="true" dense></q-table>
+                <p style="color: darkred; margin-top: 0.5rem;">Click an entry in the ReturnPeriod column to view its perils on the right table.</p>
+            </div>
+            <div style="flex: 1; background-color: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 1.5rem;">
+                <h6 style="font-size: 1.1rem; font-weight: 600; margin-top: 0; margin-bottom: 1rem;">Top perils for RP {{selected_return_period}}</h6>
+                <q-table id="ig9eh" :columns="top_perils_rp_table.columns" :data="top_perils_rp_table.data" row-key="id" :flat="true" :bordered="true" dense></q-table>
+            </div>
         </div>
-    </div>
-    <div class="row mt-4">
-        <div class="st-col col-12 col-sm st-module">
-            <h6>Return periods</h6>
-            <q-table id="iht3t" v-on:row-click="function(event,row){selected_return_period=row.ReturnPeriod}" :columns="return_periods_table.columns" :data="return_periods_table.data" row-key="id" :flat="true" :bordered="true" dense></q-table>
-            <p style="color:darkred"> Click an entry in the ReturnPeriod column to view its perils on the right table.</p>
-        </div>
-        <div class="st-col col-12 col-sm st-module">
-            <h6>Top perils for RP {{selected_return_period}}</h6>
-            <q-table id="ig9eh" :columns="specific_rp_analysis_table.columns" :data="specific_rp_analysis_table.data" row-key="id" :flat="true" :bordered="true" dense></q-table>
-        </div>
-    </div>
-</div>
+    </main>
