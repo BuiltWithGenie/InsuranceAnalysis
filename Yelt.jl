@@ -26,17 +26,23 @@ const rp_analysis = calculate_return_periods(yearly_losses, _return_periods)
     @out data_years = _data_years
     @out return_periods = _return_periods
     @out pagination = DataTablePagination(rows_per_page=10, rows_number=size(yelt_data)[1])
-    @in filter = ""
+    @in filteryelt = ""
     @out columns = vcat("All", _columns)
     @in select_filter_columns = ["All"]
 
-    @event request begin
+    @event requestyelt begin
         # the process_request function will select the portion of df to be displayed as table_page
-        filter_columns = select_filter_columns[1] in "All" ? _columns : select_filter_columns
-        filtered_data = yelt_data[[any(occursin(filter, string(row[col])) for col in filter_columns) for row in eachrow(yelt_data)], :]
+        @show filteryelt
+        filter_columns = "All" in select_filter_columns   ? _columns : select_filter_columns
+        filtered_data = yelt_data[[any(occursin(filteryelt, string(row[col])) for col in filter_columns) for row in eachrow(yelt_data)], :]
+        println(size(filtered_data))
+        if nrow(filtered_data) != 0
         state = StippleUI.Tables.process_request(filtered_data, yelt_data_table, pagination, "")
         yelt_data_table = state.datatable   # the selected portion of df
         pagination = state.pagination # update the pagination state in the backend and the browser
+        else
+        yelt_data_table = DataTable()
+        end
     end
 
     @in selected_return_period = min(100, _data_years)

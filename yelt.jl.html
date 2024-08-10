@@ -17,11 +17,11 @@
 
 <main style="max-width: 95%; margin: 2rem auto; padding: 0 1rem">
         <div style="display: flex; gap: 2rem; margin-bottom: 2rem;">
-            <div style=" background-color: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 1.5rem; width=60%; overflow:hidden">
-                <q-table row-key="__id" :columns="yelt_data_table.columns" v-model="yelt_data_table" title="YELT" :data="yelt_data_table.data" v-on:request="function (event) { handle_event(event, 'request'); }" :pagination="pagination" :pagination.sync="pagination" :filter="filter">
+            <div style=" background-color: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 1.5rem; width=60%; min-width=60%; overflow:hidden">
+                <q-table row-key="__id" :columns="yelt_data_table.columns" v-model="yelt_data_table" title="YELT" :data="yelt_data_table.data" v-on:request="function (event) { handle_event(event, 'requestyelt'); }" :pagination="pagination" :pagination.sync="pagination" :filter="filteryelt">
                     <template v-slot:top-right>
                         <q-select id="ig55" label="Filter columns" v-model="select_filter_columns" :multiple="true" :options="columns" :use-chips="true" dense style="margin-right:30px;min-width:100px" ></q-select>
-                        <q-input debounce="300" v-model="filter" label="Filter" dense style="width: 200px;">
+                        <q-input  v-model="filteryelt" debounce="0" label="Filter" dense style="width: 200px;" v-on:keyup.enter="function (event) { handle_event(event, 'requestyelt'); }">
                             <template v-slot:append>
                                 <q-icon name="search"></q-icon>
                             </template>
@@ -29,7 +29,7 @@
                     </template>
                 </q-table>
             </div>
-            <div style="flex: 1; background-color: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 1.5rem;">
+            <div style="flex: 1; background-color: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 1.5rem;width=40%">
                 <h6 style="font-size: 1.1rem; font-weight: 600; margin-top: 0; margin-bottom: 1rem;">Yearly losses</h6>
                 <q-table id="idphq" :columns="yearly_losses_table.columns" :data="yearly_losses_table.data" row-key="id" :flat="true" :bordered="true" :pagination="yearly_losses_pagination" :virtual-scroll="true" dense></q-table>
             </div>
