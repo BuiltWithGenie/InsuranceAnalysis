@@ -27,23 +27,10 @@ const rp_analysis = calculate_return_periods(yearly_losses, _return_periods)
     @out return_periods = _return_periods
     @out pagination = DataTablePagination(rows_per_page=10, rows_number=size(yelt_data)[1])
     @in filteryelt = ""
+    @out loading = false
     @out columns = vcat("All", _columns)
     @in select_filter_columns = ["All"]
 
-    @event requestyelt begin
-        # the process_request function will select the portion of df to be displayed as table_page
-        @show filteryelt
-        filter_columns = "All" in select_filter_columns   ? _columns : select_filter_columns
-        filtered_data = yelt_data[[any(occursin(filteryelt, string(row[col])) for col in filter_columns) for row in eachrow(yelt_data)], :]
-        println(size(filtered_data))
-        if nrow(filtered_data) != 0
-        state = StippleUI.Tables.process_request(filtered_data, yelt_data_table, pagination, "")
-        yelt_data_table = state.datatable   # the selected portion of df
-        pagination = state.pagination # update the pagination state in the backend and the browser
-        else
-        yelt_data_table = DataTable()
-        end
-    end
 
     @in selected_return_period = min(100, _data_years)
 
@@ -53,6 +40,22 @@ const rp_analysis = calculate_return_periods(yearly_losses, _return_periods)
     end
 
 end
+
+# events should be placed outside of the @app block
+    @event requestyelt begin
+      loading = true 
+      filter_columns = "All" in select_filter_columns   ? _columns : select_filter_columns
+      filtered_data = yelt_data[[any(occursin(filteryelt, string(row[col])) for col in filter_columns) for row in eachrow(yelt_data)], :]
+      if nrow(filtered_data) != 0
+        # the process_request function will select the portion of df to be displayed as table_page
+        state = StippleUI.Tables.process_request(filtered_data, yelt_data_table, pagination, "")
+        yelt_data_table = state.datatable   # the selected portion of df
+        pagination = state.pagination # update the pagination state in the backend and the browser
+      else
+        yelt_data_table = DataTable()
+      end
+      loading = false
+    end
 
 @page("/yelt", "yelt.jl.html")
 

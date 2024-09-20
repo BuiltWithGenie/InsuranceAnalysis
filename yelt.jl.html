@@ -18,7 +18,7 @@
 <main style="max-width: 95%; margin: 2rem auto; padding: 0 1rem">
         <div style="display: flex; gap: 2rem; margin-bottom: 2rem;">
             <div style=" background-color: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 1.5rem; width=60%; min-width=60%; overflow:hidden">
-                <q-table row-key="__id" :columns="yelt_data_table.columns" v-model="yelt_data_table" title="YELT" :data="yelt_data_table.data" v-on:request="function (event) { handle_event(event, 'requestyelt'); }" :pagination="pagination" :pagination.sync="pagination" :filter="filteryelt">
+                <q-table row-key="__id" :columns="yelt_data_table.columns" v-model="yelt_data_table" title="YELT" :data="yelt_data_table.data" :loading="loading" v-on:request="function (event) { handle_event(event, 'requestyelt'); }" :pagination="pagination" :pagination.sync="pagination" :filter="filteryelt">
                     <template v-slot:top-right>
                         <q-select id="ig55" label="Filter columns" v-model="select_filter_columns" :multiple="true" :options="columns" :use-chips="true" dense style="margin-right:30px;min-width:100px" ></q-select>
                         <q-input  v-model="filteryelt" debounce="0" label="Filter" dense style="width: 200px;" v-on:keyup.enter="function (event) { handle_event(event, 'requestyelt'); }">
@@ -28,6 +28,8 @@
                         </q-input>
                     </template>
                 </q-table>
+
+                <p style="color: darkred; margin-top: 0.5rem;">Press Enter to submit the filter query.</p>
             </div>
             <div style="flex: 1; background-color: white; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 1.5rem;width=40%">
                 <h6 style="font-size: 1.1rem; font-weight: 600; margin-top: 0; margin-bottom: 1rem;">Yearly losses</h6>

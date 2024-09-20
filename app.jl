@@ -1,5 +1,10 @@
 module App
 using Revise
-include("Contracts.jl")
-include("Yelt.jl")
+if ENV["GENIE_ENV"] == "prod"
+  include("Contracts.jl")
+  include("Yelt.jl")
+else
+  includet("Contracts.jl")
+  includet("Yelt.jl")
+end
 end
