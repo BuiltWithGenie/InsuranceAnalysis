@@ -1,5 +1,5 @@
-name = "ArkDemo"
-imgname = "arkdemo"
+name = "InsuranceAnalysis"
+imgname = "insurance"
 version = "0.0.0"
 
 [deps]
