@@ -9,5 +9,9 @@ Distributions = "31c24e10-a181-5473-b8eb-7969acd0382f"
 GenieFramework = "a59fdf5c-6bf0-4f5d-949c-a137c9e2f353"
 Revise = "295af30f-e4ad-537b-8983-00126c2a3abe"
 
+[compat]
+GenieFramework = "2"
+julia = "1"
+
 [Genie]
 instantiated_pwd = "/Users/pere/genie/genieawesome/ActuaryData"
